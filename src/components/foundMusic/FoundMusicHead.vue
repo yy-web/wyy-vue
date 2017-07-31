@@ -1,11 +1,11 @@
 <template>
-    <header>
+    <div>
         head
-    </header>
+    </div>
 </template>
 <script>
 export default{
-    name:'head',
+    name:'foundMusicHead',
     data(){
         return{
 

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import main from '@/pages/main'
+import foundMusic from '@/pages/foundMusic'
 export default {
   name: 'app',
 }

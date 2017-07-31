@@ -1,15 +1,16 @@
 <template>
-    <div class="main">
-        <head></head>
-        <router-link to='/commend'>commend</router-link>
+    <div class="foundMusic">
+        <found-music-head></found-music-head>
+        <router-link to='/'>commend</router-link>
         <router-link to='/songList'>songList</router-link>
+        <router-link to='/radioStation'>radioStation</router-link>
         <router-link to='/charts'>charts</router-link>
-        <router-view name='a'></router-view>
+        <router-view></router-view>
         <foot-nav></foot-nav>
     </div>
 </template>
 <script>
-    import head from '@/components/Head'
+    import foundMusicHead from '@/components/foundMusic/FoundMusicHead'
     import footNav from '@/components/FootNav'
 
     export default {
@@ -19,7 +20,7 @@
             }
         },
         components:{
-            head,
+            foundMusicHead,
             footNav
         }
     }
