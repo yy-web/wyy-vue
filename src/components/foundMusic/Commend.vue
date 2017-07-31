@@ -1,6 +1,8 @@
 <template>
-    <div>
-        commend
+    <div class="commend">
+        <div class="topBar">
+          
+        </div>
     </div>
 </template>
 <script>
