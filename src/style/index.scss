@@ -1,0 +1,5 @@
+$FONTSIZE : 375 / 10;
+$baseColor:#d43c33;
+@function rem($px) {
+  @return ($px/$FONTSIZE) + rem;
+}
