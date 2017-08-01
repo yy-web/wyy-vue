@@ -15,19 +15,24 @@
                 <span>云音乐热歌榜</span>
             </div>
         </div>
+        <song-list :listData="listData"></song-list>
     </div>
 </template>
 <script>
 import banner from '@/components/foundMusic/Banner'
+import songList from '@/components/SongList'
 export default{
     name:'commend',
     data(){
         return{
-
+          listData:[{imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',num:'100w',desc:'案件法律框架的法律框架房东'}
+        ,{imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',num:'100w',desc:'案件法律框架的法律框架房东'},
+      {imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',num:'100w',desc:'案件法律框架的法律框架房东'},]
         }
     },
     components:{
-        banner
+        banner,
+        songList
     }
 }
 

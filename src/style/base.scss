@@ -7,6 +7,11 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 body,button,input,select,textarea {
     font:16px \5b8b\4f53,arial,sans-serif;
 }
+.ell2{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 input,select,textarea {
     font-size:100%;
 }
