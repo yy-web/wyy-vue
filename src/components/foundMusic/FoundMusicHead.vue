@@ -14,3 +14,9 @@ export default{
 }
 
 </script>
+<style scoped lang="scss">
+    $loading_height: 48;
+    div{
+        height: $loading_height
+    }
+</style>
