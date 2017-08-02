@@ -8,9 +8,10 @@ body,button,input,select,textarea {
     font:16px \5b8b\4f53,arial,sans-serif;
 }
 .ell2{
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 input,select,textarea {
     font-size:100%;

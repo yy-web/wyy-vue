@@ -10,8 +10,8 @@
     </div>
 </template>
 <script>
-    import foundMusicHead from '@/components/foundMusic/FoundMusicHead'
-    import footNav from '@/components/FootNav'
+    import foundMusicHead from '@/components/foundMusic/FoundMusicHead';
+    import footNav from '@/components/FootNav';
 
     export default {
         data(){
@@ -21,7 +21,7 @@
         },
         components:{
             foundMusicHead,
-            footNav
+            footNav,
         }
     }
 </script>

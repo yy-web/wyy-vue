@@ -37,10 +37,10 @@ export default{
     height: rem(28);
   }
   .topBar_mic{
-    background: url('../../../static/img/topbar_mic2.png')
+    background: url('../../../static/img/topbar_mic2.png')no-repeat;
   }
   .topBar_play{
-    background: url('../../../static/img/topbar_playing.png')
+    background: url('../../../static/img/topbar_playing.png')no-repeat;
   }
   .search_box{
     position: relative;
@@ -58,7 +58,7 @@ export default{
       position: absolute;
       left: rem(25);
       top: rem(8);
-      background: url('../../../static/img/topbar_search2.png')
+      background: url('../../../static/img/topbar_search2.png')no-repeat;
     }
   }
 
