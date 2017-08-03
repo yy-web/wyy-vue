@@ -1,8 +1,8 @@
 <template>
-    <div class="private">
+    <div class="private" >
         <div class="item" v-for="item in privateData">
             <div class="item_top">
-                <img class="r_icon" :src="require('../../static/img/topic_sm.png')" alt=""/>
+                <img class="l_icon" :src="require('../../static/img/topic_sm.png')" alt=""/>
                 <img :src="item.imgSrc" alt=""/>
             </div>
             <p class="p_desc ell2">{{item.desc}}</p>
@@ -17,7 +17,7 @@
             }
         },
         props:{
-            privateData:Array
+            privateData:Array,
         }
     }
 
@@ -41,7 +41,7 @@
         }
         .item_top{
             position: relative;
-            .r_icon{
+            .l_icon{
                 position: absolute;
                 top: rem(5);
                 left:rem(5);

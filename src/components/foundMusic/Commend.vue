@@ -17,7 +17,7 @@
   </div>
   <div class="block">
     <title-bar :titleBar="commend"></title-bar>
-    <song-list :listData="listData" :klass="small"></song-list>
+    <song-list :listData="listData" :type=true :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="exclusive"></title-bar>
@@ -26,44 +26,56 @@
   </div>
   <div class="block">
     <title-bar :titleBar="newMusic"></title-bar>
-    <song-list :listData="listData" :klass="small"></song-list>
+    <song-list :listData="newMusicList" :type=false :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="mv"></title-bar>
+    <mv-list :mvData="mvData"></mv-list>
   </div>
   <div class="block">
     <title-bar :titleBar="radio"></title-bar>
+    <radio-list :radioData="radioData"></radio-list>
   </div>
 </div>
 </template>
 <script>
 import banner from '@/components/foundMusic/Banner';
 import titleBar from '@/components/foundMusic/TitleBar';
+import radioList from '@/components/foundMusic/radio';
 import songList from '@/components/SongList';
 import privateCommend from '@/components/Private';
+import mvList from '@/components/mv';
 export default {
   name: 'commend',
+  components: {
+    banner,
+    songList,
+    titleBar,
+    privateCommend,
+    mvList,
+    radioList
+},
   data() {
     return {
       small: 'small',
       listData: [{
           imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
           num: '100w',
-          desc: '案件法律框架的法律框架房东'
+          desc: '案件法律框架的法律框架房东',
         }, {
           imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
           num: '100w',
-          desc: '案件法律框架的法律框架房东'
+          desc: '案件法律框架的法律框架房东',
         },
         {
           imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
           num: '100w',
-          desc: '案件法律框架的法律框架房东'
+          desc: '案件法律框架的法律框架房东',
         },
         {
           imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
           num: '100w',
-          desc: '案件法律框架的法律框架房东'
+          desc: '案件法律框架的法律框架房东',
         },
       ],
       commend: {
@@ -100,17 +112,70 @@ export default {
               imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
               desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方'
           }
-      ]
+      ],
+      mvData:[
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              num:123123123,
+              art:'大阿凡达 '
+          },
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              num:123123123,
+              art:'大阿凡达 '
+          },
+
+      ],
+      radioData:[
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              name:'阿斯蒂芬',
+          },
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              name:'阿斯蒂芬',
+          },
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              name:'阿斯蒂芬',
+          },
+          {
+              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
+              name:'阿斯蒂芬',
+          },
+
+      ],
+      newMusicList: [{
+          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+          desc: '案件法律框架的法律框架房东',
+          art:'12312afaddf'
+        }, {
+          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+          desc: '案件法律框架的法律框架房东',
+          art:'12312afaddf'
+        },
+        {
+          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+          desc: '案件法律框架的法律框架房东',
+          art:'12312afaddf'
+        },
+        {
+          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
+          desc: '案件法律框架的法律框架房东',
+          art:'12312afaddf'
+        },
+      ],
 
 
     }
   },
-  components: {
-    banner,
-    songList,
-    titleBar,
-    privateCommend,
-  }
+
 }
 </script>
 <style lang="scss" scoped>@import '../../style/index.scss';
@@ -138,6 +203,6 @@ export default {
     }
 }
 .block {
-    margin-bottom: rem(20);
+    margin-bottom: rem(15);
 }
 </style>
