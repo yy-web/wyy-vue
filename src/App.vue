@@ -1,13 +1,18 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <foot-nav></foot-nav>
   </div>
 </template>
 
 <script>
-import foundMusic from '@/pages/foundMusic'
+
+import footNav from '@/components/FootNav';
 export default {
   name: 'app',
+  components:{
+      footNav,
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

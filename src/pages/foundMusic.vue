@@ -4,15 +4,11 @@
         <div class="topBar">
           <router-link v-for="(list,index) in topBar" key="index" :to="list.link" activeClass="select">{{list.name}}</router-link>
         </div>
-
         <router-view></router-view>
-        <foot-nav></foot-nav>
     </div>
 </template>
 <script>
     import foundMusicHead from '@/components/foundMusic/FoundMusicHead';
-    import footNav from '@/components/FootNav';
-
     export default {
         data(){
             return{
@@ -21,7 +17,6 @@
         },
         components:{
             foundMusicHead,
-            footNav,
         }
     }
 </script>
