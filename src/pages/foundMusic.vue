@@ -1,10 +1,14 @@
 <template>
     <div class="foundMusic">
+      <div class="header">
         <found-music-head></found-music-head>
         <div class="topBar">
-          <router-link v-for="(list,index) in topBar" key="index" :to="list.link" activeClass="select">{{list.name}}</router-link>
+          <router-link v-for="(list,index) in topBar" key="index" exact :to="list.link" activeClass="select">{{list.name}}</router-link>
         </div>
+      </div>
+      <div class="content">
         <router-view></router-view>
+      </div>
     </div>
 </template>
 <script>
@@ -12,7 +16,7 @@
     export default {
         data(){
             return{
-              topBar:[{name:'个性推荐',link:'/'},{name:'歌单',link:'/songList'},{name:'主播电台',link:'radioStation'},{name:'排行榜',link:'charts'}]
+              topBar:[{name:'个性推荐',link:'/foundMusic'},{name:'歌单',link:'/foundMusic/songList'},{name:'主播电台',link:'/foundMusic/radioStation'},{name:'排行榜',link:'/foundMusic/charts'}]
             }
         },
         components:{
@@ -22,6 +26,15 @@
 </script>
 <style lang="scss" scoped="">
   @import '../style/index.scss';
+  .header{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+  .content{
+    padding-top: rem(104);
+    padding-bottom: rem(49);
+  }
   .topBar{
     background-color: #fff;
     display: flex;
@@ -31,7 +44,7 @@
     align-items: center;
     font-size: rem(12);
     .select{
-        border-bottom: 1px solid #d33a31;
+        border-bottom: 2px solid #d33a31;
         color: #d33a31;
         text-decoration: none;
     }

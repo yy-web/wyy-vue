@@ -23,12 +23,12 @@ export default{
   @import "../../style/index.scss";
   .headBg{
     width: 100%;
-    height: 64px;
+    height: rem(64);
     background-color: $baseColor;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    padding-bottom: 12px;
+    padding-bottom: rem(12);
     box-sizing: border-box;
   }
   .headBg .icon{

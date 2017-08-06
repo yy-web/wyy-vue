@@ -42,12 +42,19 @@
 @import '../style/index.scss';
 .songList{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 rem(10);
   .small{
     width: 31%;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .big{
+    width: 49%;
     img{
       width: 100%;
       height: 100%;

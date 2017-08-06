@@ -31,6 +31,7 @@
         padding:0 rem(10);
         .item{
             width: 100%;
+            margin-bottom: rem(8);
             img{
                 width: 100%;
                 height: rem(100) ;
