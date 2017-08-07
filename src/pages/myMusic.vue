@@ -53,28 +53,25 @@
 <script>
 import vOption from '@/components/myMusic/option';
 import listItem from '@/components/listItem';
+import { mapState,mapActions } from 'vuex';
 import axios from 'axios';
+
 export default {
   name: 'myMusic',
   components:{
     vOption,
     listItem
   },
+  computed: {
+      ...mapState(['list'])
+    },
+    methods: {
+          ...mapActions(['getList'])
+      },
   mounted() {
-    var instance = axios.create({
-      baseURL: 'http://localhost:4000',
-    });
-    instance.get('/top/list?idx=1').then(function(res){
-        console.log(res);
-        console.log(this.optionData,2);
-    }.bind(this)).then(function(err){
-        console.log(err);
-    })
-  },
-  methods:{
-
-
-
+      console.log(this.$store.state.list,'list');
+      this.getList()
+      console.log(this.$store.state.list,'list2');
   },
   data() {
     return {

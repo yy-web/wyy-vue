@@ -1,9 +1,29 @@
 import axios from 'axios';
-axios.default.baseURL = 'http://localhost:4000';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+var http = axios.create({
+  baseURL: 'http://localhost:4000'
 
-axios.get('/top/list?idx=1').then(function(res){
-    console.log(res);
-}).then(function(err){
-    console.log(err);
-})
+});
+const getHttp = (action,cb,errcb) => {
+    http.get(action).then(res =>{
+        console.log(res);
+        cb && cb(res.data)
+    }).catch(err =>{
+        console.log(err,action+'err');
+        errcb && errcb(err)
+    })
+}
+const postHttp = (action,data,cb,errcb) => {
+    http.post(action,data).then(res =>{
+        console.log(res.data,'action:'+action);
+        cb(res.data)
+    }).catch(err =>{
+        console.log(err,action+'err');
+        errcb && errcb(err)
+    })
+}
+
+export default{
+    getList:(action,cb,err)=>{
+        getHttp(action,cb,err)
+    }
+}
