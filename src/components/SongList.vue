@@ -1,24 +1,24 @@
 <template >
   <div class="songList" v-if="type" >
       <div class="item"  :class="klass" v-for="(item,index) in listData" :key="index">
-          <img :src="item.imgSrc" alt=""/>
+          <img :src="item.picUrl" alt=""/>
           <div class="topBg">
               <div class="top">
                 <img class="icon" :src="require('../../static/img/cover_music.png')"/>
-                <span class="num">{{item.num}}</span>
+                <span class="num">{{item.playCount}}</span>
               </div>
           </div>
           <div>
-              <p class="ell2">{{item.desc}}</p>
+              <p class="ell2">{{item.name}}</p>
           </div>
       </div>
   </div>
   <div  class="songList" v-else >
       <div  class="item"  :class="klass" v-for="(item2,index) in listData" :key="index">
-          <img :src="item2.imgSrc" alt=""/>
+          <img :src="item2.song.album.picUrl" alt=""/>
           <div>
-              <p class="ell">{{item2.desc}}</p>
-              <p class="ell art">{{item2.art}}</p>
+              <p class="ell">{{item2.name}}</p>
+              <p class="ell art">{{item2.song.artists[0].name}}</p>
           </div>
       </div>
   </div>

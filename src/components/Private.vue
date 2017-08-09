@@ -3,9 +3,9 @@
         <div class="item" v-for="item in privateData">
             <div class="item_top">
                 <img class="l_icon" :src="require('../../static/img/topic_sm.png')" alt=""/>
-                <img :src="item.imgSrc" alt=""/>
+                <img :src="item.picUrl" alt=""/>
             </div>
-            <p class="p_desc ell2">{{item.desc}}</p>
+            <p class="p_desc ell2">{{item.name}}</p>
         </div>
     </div>
 </template>

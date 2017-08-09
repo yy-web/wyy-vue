@@ -17,24 +17,24 @@
   </div>
   <div class="block">
     <title-bar :titleBar="commend"></title-bar>
-    <song-list :listData="listData" :type=true :klass="small"></song-list>
+    <song-list :listData="songList" :type=true :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="exclusive"></title-bar>
-    <private-commend :privateData="privateData"></private-commend>
+    <private-commend :privateData="privateList"></private-commend>
 
   </div>
   <div class="block">
     <title-bar :titleBar="newMusic"></title-bar>
-    <song-list :listData="newMusicList" :type=false :klass="small"></song-list>
+    <song-list :listData="newSongList" :type=false :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="mv"></title-bar>
-    <mv-list :mvData="mvData"></mv-list>
+    <mv-list :mvData="commendMVData "></mv-list>
   </div>
   <div class="block">
     <title-bar :titleBar="radio"></title-bar>
-    <radio-list :radioData="radioData"></radio-list>
+    <radio-list :radioData="radioList"></radio-list>
   </div>
 </div>
 </template>
@@ -45,6 +45,10 @@ import radioList from '@/components/foundMusic/radio';
 import songList from '@/components/SongList';
 import privateCommend from '@/components/Private';
 import mvList from '@/components/mv';
+import {
+  mapState,
+  mapActions
+} from 'vuex';
 export default {
   name: 'commend',
   components: {
@@ -55,29 +59,24 @@ export default {
     mvList,
     radioList
 },
+    computed: {
+      ...mapState(['songList','privateList','newSongList','commendMVData','radioList']),
+    },
+    methods: {
+      ...mapActions(['getSongList','privates','getNewSong','commendMV','getRadioList','fetchAlls'])
+    },
+    mounted() {
+        this.privates();
+        this.getSongList();
+        this.getNewSong();
+        this.commendMV();
+        this.getRadioList();
+        // let arr = [this.privates(),this.getSongList()]
+        // this.fetchAlls(arr)
+    },
   data() {
     return {
       small: 'small',
-      listData: [{
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          num: '100w',
-          desc: '案件法律框架的法律框架房东',
-        }, {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          num: '100w',
-          desc: '案件法律框架的法律框架房东',
-        },
-        {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          num: '100w',
-          desc: '案件法律框架的法律框架房东',
-        },
-        {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          num: '100w',
-          desc: '案件法律框架的法律框架房东',
-        },
-      ],
       commend: {
         name: '推荐歌单',
         class: "commend",
@@ -102,77 +101,7 @@ export default {
         name: '主播电台',
         class: "radio",
         link: 'radioStation'
-      },
-      privateData:[
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方'
-          },
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方'
-          }
-      ],
-      mvData:[
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              num:123123123,
-              art:'大阿凡达 '
-          },
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              num:123123123,
-              art:'大阿凡达 '
-          },
-
-      ],
-      radioData:[
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              name:'阿斯蒂芬',
-          },
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              name:'阿斯蒂芬',
-          },
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              name:'阿斯蒂芬',
-          },
-          {
-              imgSrc:'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              desc:'金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方金坷垃地方',
-              name:'阿斯蒂芬',
-          },
-
-      ],
-      newMusicList: [{
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          desc: '案件法律框架的法律框架房东',
-          art:'12312afaddf'
-        }, {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          desc: '案件法律框架的法律框架房东',
-          art:'12312afaddf'
-        },
-        {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          desc: '案件法律框架的法律框架房东',
-          art:'12312afaddf'
-        },
-        {
-          imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-          desc: '案件法律框架的法律框架房东',
-          art:'12312afaddf'
-        },
-      ],
-
-
+      }
     }
   },
 

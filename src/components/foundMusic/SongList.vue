@@ -24,43 +24,35 @@
        <span class="arrow"></span>
     </div>
     <div class="block list">
-        <song-list :listData="listData" :type=true :klass="big"></song-list>
+        <all-list :allList="allSongList" :type=true :klass="big"></all-list>
     </div>
   </div>
 </template>
 <script>
 import vTitle from '@/components/foundMusic/Title';
-import songList from '@/components/SongList';
+import allList from '@/components/foundMusic/allList';
+import {mapState , mapActions} from 'vuex';
 export default{
+
     name:'songListIndex',
     components:{
       vTitle,
-      songList
+      allList
+    },
+    computed: {
+      ...mapState(['allSongList']),
+    },
+    methods: {
+      ...mapActions(['getAllSongList'])
+    },
+    mounted() {
+        this.getAllSongList();
+
     },
     data(){
         return{
           titleName:"全部歌单",
           big:'big',
-          listData: [{
-              imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              num: '100w',
-              desc: '案件法律框架的法律框架房东案件法律框架的法律框架房东案件法律框架的法律框架房东',
-            }, {
-              imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              num: '100w',
-              desc: '案件法律框架的法律框架房东',
-            },
-            {
-              imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              num: '100w',
-              desc: '案件法律框架的法律框架房东',
-            },
-            {
-              imgSrc: 'http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140',
-              num: '100w',
-              desc: '案件法律框架的法律框架房东',
-            },
-          ],
         }
     }
 }

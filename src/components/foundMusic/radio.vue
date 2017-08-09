@@ -2,16 +2,16 @@
   <div class="radioList" >
       <div class="item" v-for="(item,index) in radioData" :key="index">
           <div class="img_box">
-              <img :src="item.imgSrc" alt=""/>
+              <img :src="item.picUrl" alt=""/>
               <div class="bottomBg">
                   <div class="bottom">
-                      <span class="name">{{item.name}}</span>
+                      <span class="name ell">{{item.dj.nickname}}</span>
                       <img class="icon" :src="require('../../../static/img/btn_play.png')"/>
                   </div>
               </div>
           </div>
           <div>
-              <p class="ell2">{{item.desc}}</p>
+              <p class="ell2">{{item.copywriter}}</p>
           </div>
       </div>
   </div>
@@ -69,6 +69,7 @@
     }
     p{
         line-height: 1.5;
+        height: rem(36);
     }
 
   }

@@ -5,14 +5,14 @@
                 <div class="mes">
                     <div class="pos">
                         <img class="r_icon" :src="require('../../static/img/cover_video.png')" alt=""/>
-                        <span class="num">123123</span>
+                        <span class="num">{{item.playCount}}</span>
                     </div>
 
                 </div>
-                <img :src="item.imgSrc" alt=""/>
+                <img :src="item.picUrl" alt=""/>
             </div>
-            <p class="ell">{{item.desc}}</p>
-            <p class="ell art">{{item.art}}</p>
+            <p class="ell">{{item.copywriter}}</p>
+            <p class="ell art">{{item.artistName}}</p>
         </div>
     </div>
 </template>

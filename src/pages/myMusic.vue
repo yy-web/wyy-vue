@@ -53,7 +53,7 @@
 <script>
 import vOption from '@/components/myMusic/option';
 import listItem from '@/components/listItem';
-import { mapState,mapActions } from 'vuex';
+
 import axios from 'axios';
 
 export default {
@@ -62,17 +62,7 @@ export default {
     vOption,
     listItem
   },
-  computed: {
-      ...mapState(['list'])
-    },
-    methods: {
-          ...mapActions(['getList'])
-      },
-  mounted() {
-      console.log(this.$store.state.list,'list');
-      this.getList()
-      console.log(this.$store.state.list,'list2');
-  },
+
   data() {
     return {
       optionData:{
