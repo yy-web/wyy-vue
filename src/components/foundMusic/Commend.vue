@@ -80,7 +80,7 @@ export default {
       commend: {
         name: '推荐歌单',
         class: "commend",
-        link: 'songList'
+        link: '/foundMusic/songList'
       },
       exclusive: {
         name: '独家放送',
