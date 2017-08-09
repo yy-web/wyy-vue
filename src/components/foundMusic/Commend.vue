@@ -66,11 +66,11 @@ export default {
       ...mapActions(['getSongList','privates','getNewSong','commendMV','getRadioList','fetchAlls'])
     },
     mounted() {
-        this.privates();
+        //this.privates();
         this.getSongList();
-        this.getNewSong();
-        this.commendMV();
-        this.getRadioList();
+      //  this.getNewSong();
+        //this.commendMV();
+        //this.getRadioList();
         // let arr = [this.privates(),this.getSongList()]
         // this.fetchAlls(arr)
     },
