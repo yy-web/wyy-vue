@@ -3,7 +3,7 @@ var http = axios.create({
   baseURL: 'http://localhost:4000'
 
 });
-export const getHttp = (action,cb,errcb) => {
+const getHttp = (action,cb,errcb) => {
     http.get(action).then(res =>{
         console.log(res,'action'+action);
         cb && cb(res.data)
@@ -12,7 +12,7 @@ export const getHttp = (action,cb,errcb) => {
         errcb && errcb(err)
     })
 }
-export const postHttp = (action,data,cb,errcb) => {
+const postHttp = (action,data,cb,errcb) => {
     http.post(action,data).then(res =>{
         console.log(res.data,'action:'+action);
         cb(res.data)
@@ -21,44 +21,101 @@ export const postHttp = (action,data,cb,errcb) => {
         errcb && errcb(err)
     })
 }
-export const fetchAll = (actionArr,cb,errcb) => {
+const fetchAll = (actionArr,cb,errcb) => {
   axios.all(actionArr)
     .then(res=>{
-      console.log(res);
+      cb && cb(res)
     })
     .catch(err => {
-      //errcb && errcb(err)
+      errcb && errcb(err)
     })
 }
-// export default{
-//     fetchAlls:(actionArr,cb,err)=>{
-//         fetchAll(actionArr,cb,err)
-//     },
-//     login:(action,cb,err) =>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取每日推荐歌单
-//     getSongList:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取独家放送
-//     getPrivate:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取最新音乐
-//     getNewSong:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取推荐mv
-//     commendMV:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取主播电台
-//     getRadioList:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-//     //获取全部歌单
-//     getAllSongList:(action,cb,err)=>{
-//         getHttp(action,cb,err)
-//     },
-// }
+export default{
+    fetchAlls:(actionArr,cb,err)=>{
+        fetchAll(actionArr,cb,err)
+    },
+    login:(cb,err) =>{
+        const action = '/login/cellphone?phone=13249224519&password=yaoyue0726'
+        return http.get(action)
+    },
+    //获取每日推荐歌单
+    getSongList:(cb,err)=>{
+        const action = '/personalized'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取独家放送
+    getPrivate:(cb,err)=>{
+        const action = '/personalized/privatecontent'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取最新音乐
+    getNewSong:(cb,err)=>{
+        const action = '/personalized/newsong'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取推荐mv
+    commendMV:(cb,err)=>{
+        const action = '/personalized/mv'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取主播电台
+    getRadioList:(cb,err)=>{
+        const action = '/dj/recommend'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getplayList:(cb,err)=>{
+        const action = '/top/playlist/highquality?limit=1'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取全部歌单
+    getAllSongList:(cb,err)=>{
+        const action = '/top/playlist?limit=20&order=hot'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    //获取最新mv
+    getNewMV:(cb,err)=>{
+        const action = '/mv/first?limit=10'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getMVbillboard:(cb,err)=>{
+        const action = 'top/mv?limit=10'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+
+}

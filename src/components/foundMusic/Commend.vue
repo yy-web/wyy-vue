@@ -17,24 +17,24 @@
   </div>
   <div class="block">
     <title-bar :titleBar="commend"></title-bar>
-    <song-list :listData="songList" :type=true :klass="small"></song-list>
+    <song-list :listData="commendPage.songList" :type=true :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="exclusive"></title-bar>
-    <private-commend :privateData="privateList"></private-commend>
+    <private-commend :privateData="commendPage.privateList"></private-commend>
 
   </div>
   <div class="block">
     <title-bar :titleBar="newMusic"></title-bar>
-    <song-list :listData="newSongList" :type=false :klass="small"></song-list>
+    <song-list :listData="commendPage.newSongList" :type=false :klass="small"></song-list>
   </div>
   <div class="block">
     <title-bar :titleBar="mv"></title-bar>
-    <mv-list :mvData="commendMVData "></mv-list>
+    <mv-list :mvData="commendPage.commendMVData" :type="true" ></mv-list>
   </div>
   <div class="block">
     <title-bar :titleBar="radio"></title-bar>
-    <radio-list :radioData="radioList"></radio-list>
+    <radio-list :radioData="commendPage.radioList"></radio-list>
   </div>
 </div>
 </template>
@@ -60,19 +60,13 @@ export default {
     radioList
 },
     computed: {
-      ...mapState(['songList','privateList','newSongList','commendMVData','radioList']),
+      ...mapState(['commendPage']),
     },
     methods: {
-      ...mapActions(['getSongList','privates','getNewSong','commendMV','getRadioList','fetchAlls'])
+      ...mapActions(['fetchCommend'])
     },
     mounted() {
-        //this.privates();
-        this.getSongList();
-      //  this.getNewSong();
-        //this.commendMV();
-        //this.getRadioList();
-        // let arr = [this.privates(),this.getSongList()]
-        // this.fetchAlls(arr)
+        this.fetchCommend()
     },
   data() {
     return {
@@ -95,7 +89,7 @@ export default {
       mv: {
         name: '推荐MV',
         class: "mv",
-        link: 'songList'
+        link: '/moreMV'
       },
       radio: {
         name: '主播电台',

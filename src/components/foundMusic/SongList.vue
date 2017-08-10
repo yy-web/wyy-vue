@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="block">
-      <v-title :name="titleName"></v-title>
+      <v-title :name="'全部歌单'"></v-title>
       <div class="c_pos">
         <div class="choose">
           <span class="c_icon"></span>
@@ -11,20 +11,19 @@
     </div>
     <div class="block hot_box">
       <div class="left">
-        <img src="http://p1.music.126.net/wn3eF0GEWBqmgYFy5tj4gA==/109951162985002004.jpg?param=140y140" alt="">
+        <img :src="songListPage.playList.coverImgUrl" alt="">
       </div>
-      <div class="right">
+      <div class="right" >
         <div class="top">
           <span class="hot"></span>
           <span class="hotTitle">精品歌单</span>
         </div>
-        <p>倾听自然，海之遐想</p>
-
+        <p>{{songListPage.playList.name}}</p>
       </div>
        <span class="arrow"></span>
     </div>
     <div class="block list">
-        <all-list :allList="allSongList" :type=true :klass="big"></all-list>
+        <all-list :allList="songListPage.allSongList" :type=true :klass="big"></all-list>
     </div>
   </div>
 </template>
@@ -40,18 +39,17 @@ export default{
       allList
     },
     computed: {
-      ...mapState(['allSongList']),
+      ...mapState(['songListPage']),
     },
     methods: {
-      ...mapActions(['getAllSongList'])
+      ...mapActions(['fetchSongList'])
     },
     mounted() {
-        this.getAllSongList();
+        this.fetchSongList();
 
     },
     data(){
         return{
-          titleName:"全部歌单",
           big:'big',
         }
     }

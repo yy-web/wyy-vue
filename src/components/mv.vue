@@ -1,5 +1,5 @@
 <template>
-    <div class="mvList">
+    <div class="mvList" v-if="type">
         <div class="item" v-for="item in mvData">
             <div class="item_top">
                 <div class="mes">
@@ -15,6 +15,22 @@
             <p class="ell art">{{item.artistName}}</p>
         </div>
     </div>
+    <div class="mvList" v-else>
+        <div class="item" v-for="item in mvData">
+            <div class="item_top">
+                <div class="mes">
+                    <div class="pos">
+                        <img class="r_icon" :src="require('../../static/img/cover_video.png')" alt=""/>
+                        <span class="num">{{item.playCount}}</span>
+                    </div>
+                </div>
+                <img :src="item.cover" alt=""/>
+                <span  class="ell desc">{{item.briefDesc}}</span>
+            </div>
+            <p class="ell">{{item.name}}</p>
+            <p class="ell art">{{item.artistName}}</p>
+        </div>
+    </div>
 </template>
 <script>
     export default{
@@ -25,6 +41,7 @@
         },
         props:{
             mvData:Array,
+            type:Boolean
         }
     }
 
@@ -68,6 +85,12 @@
                     };
                 }
 
+            }
+            .desc{
+                position: absolute;
+                bottom: 0;
+                padding: rem(7) rem(6);
+                width: 100%;
             }
 
         }

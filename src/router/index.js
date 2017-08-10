@@ -7,6 +7,7 @@ import account from '@/pages/account'
 import Commend from '@/components/foundMusic/Commend'
 import SongListIndex from '@/components/foundMusic/SongList'
 import Charts from '@/components/foundMusic/Charts'
+import MoreMV from '@/components/foundMusic/MoreMV'
 import RadioStation from '@/components/foundMusic/RadioStation'
 
 Vue.use(Router)
@@ -33,24 +34,26 @@ export default new Router({
           component: Charts
         }
       ]
-    },
-    {
+    }, {
       path: '/mine',
       components: {
         default: myMusic
-      },
-    },
-    {
+      }
+    }, {
       path: '/friend',
       components: {
         default: friend
-      },
-    },
-    {
+      }
+    }, {
       path: '/account',
       components: {
         default: account
-      },
+      }
+    }, {
+      path: '/moreMV',
+      components: {
+        default: MoreMV
+      }
     }
   ]
 })

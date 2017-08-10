@@ -1,41 +1,38 @@
-import { getHttp,fetchAll } from '../api/index'
+import api from '../api/index'
 export default{
     login({ commit }){
-        getHttp('/login/cellphone?phone=13249224519&password=yaoyue0726',(res)=>{
+        api.getSongList((res)=>{
             commit('LOGIN',{user:res})
         })
     },
-    getSongList({ commit }){
-        getHttp('/personalized',(res)=>{
-            commit('GETSONGLIST',{list:res.result})
+    fetchCommend({ commit }){
+        const arr = [api.getPrivate(),api.getSongList(),api.getNewSong(),api.commendMV(),api.getRadioList()]
+        const cb = (res)=>{
+            commit('PRIVATES',{privateList:res[0].data.result})
+            commit('GETSONGLIST',{songList:res[1].data.result})
+            commit('NEWSONG',{newSongList:res[2].data.result.slice(0,6)})
+            commit('COMMENDMV',{commendMV:res[3].data.result})
+            commit('RADIOLIST',{radioList:res[4].data.djRadios.slice(0,6)})
+        }
+        api.fetchAlls(arr,cb)
+    },
+    fetchSongList({ commit }){
+        const arr = [api.getAllSongList(),api.getplayList()]
+        const cb = (res)=>{
+            commit('ALLSONGLIST',{allSongList:res[0].data.playlists})
+            commit('PLAYLIST',{playList:res[1].data.playlists[0]})
+        }
+        api.fetchAlls(arr,cb)
+    },
+    getNewMV({ commit }){
+        api.getNewMV(res=>{
+            commit('NEWMV',{newMV:res.data})
         })
     },
-    privates({ commit }){
-        getHttp('/personalized/privatecontent',(res)=>{
-            commit('PRIVATES',{privateList:res.result})
+    getMVbillboard({ commit }){
+        api.getMVbillboard(res=>{
+            commit('GETBILLBOARD',{billboard:res.data})
         })
-    },
-    getNewSong({ commit }){
-        getHttp('/personalized/newsong',(res)=>{
-            commit('NEWSONG',{newSongList:res.result.slice(0,6)})
-        })
-    },
-    commendMV({ commit }){
-        getHttp('/personalized/mv',(res)=>{
-            commit('COMMENDMV',{commendMV:res.result})
-        })
-    },
-    getRadioList({ commit }){
-        getHttp('/dj/recommend',(res)=>{
-            commit('RADIOLIST',{radioList:res.djRadios.slice(0,6)})
-        })
-    },
-    getAllSongList({ commit }){
-        getHttp('/top/playlist?limit=20&order=hot',(res)=>{
-            commit('ALLSONGLIST',{allSongList:res.playlists})
-        })
-    },
-    fetchAlls(arr,cb,errcb){
-        fetchAll(arr,cb,errcb)
     }
+
 }
