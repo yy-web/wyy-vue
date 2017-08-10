@@ -73,11 +73,15 @@
             color: #fff;
             .mes{
                 position: absolute;
-                top: rem(5);
-                right:rem(8);
+                top: 0;
+                right:0;
+                left: 0;
                 .pos{
                     display: flex;
                     align-items: center;
+                    justify-content: flex-end;
+                    padding: 2px 5px;
+                    @include opacityBG;
                     .r_icon{
                         width: rem(12);
                         height: rem(12);

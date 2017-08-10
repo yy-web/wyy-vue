@@ -2,6 +2,7 @@
 <div class="MVbillboard">
     <div class="billboardItem" v-for="(item,index) in billboardData">
         <img :src="item.cover" alt="" />
+        <div class="wrap"></div>
         <div class="top">
             <div class="pos">
                 <img class="r_icon" :src="require('../../../static/img/cover_video.png')" alt=""/>
@@ -54,6 +55,14 @@ export default {
     position: relative;
     margin:0 rem(10);
     margin-bottom: rem(5);
+    .wrap{
+      @include opacityBottomBG;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
     img{
         width: 100%;
         height: 100%;

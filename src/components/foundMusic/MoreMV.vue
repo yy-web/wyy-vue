@@ -22,6 +22,12 @@
             <p>最近更新：今天</p>
             <span class="dis_i"></span>
         </div>
+        <div class="tipsBox">
+          <div class="bubble">
+            <p>选取云音乐中三个月内发布的热度最高的50支MV， 每天更新。热度由MV播放、收藏、分享数量综合计算</p>
+          </div>
+          <div id="triangleUp"></div>
+        </div>
       <mv-billboard :type="false" :billboardData="moreMVPage.billboard"></mv-billboard>
     </div>
   </div>
@@ -74,6 +80,9 @@ export default {
     top: 0;
     z-index: 100;
 }
+.block{
+  position: relative;
+}
 .content {
     margin-top: rem(64);
     margin-bottom: rem(49);
@@ -92,6 +101,39 @@ export default {
         background-size: 100%;
         display: inline-block;
     }
+
+}
+.tipsBox{
+  .bubble{
+      background: #000;
+      border-radius: rem(5);
+      width: 99%;
+      height: rem(46);
+      position: absolute;
+      top: rem(40);
+      right: rem(1);
+      z-index: 101;
+      color:#fff;
+      font-size: rem(12);
+      p{
+        display: flex;
+        align-items: center;
+        padding: 0 rem(10);
+        height: rem(46);
+        line-height: 1.5;
+      }
+  }
+  #triangleUp {
+    position: absolute;
+    top: rem(28);
+    right: rem(8);
+    z-index: 101;
+    width: 0;
+    height: 0;
+    border-right: rem(13) solid transparent;
+    border-bottom: rem(13) solid black;
+    border-left: rem(13) solid transparent;
+}
 }
 .headBg {
     width: 100%;

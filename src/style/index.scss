@@ -3,3 +3,15 @@ $baseColor:#d43c33;
 @function rem($px) {
   @return ($px/$FONTSIZE) + rem;
 }
+@mixin opacityBG {
+  background: -webkit-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.05),rgba(0,0,0,0.1),rgba(0,0,0,0.2)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.05),rgba(0,0,0,0.1),rgba(0,0,0,0.2)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.05),rgba(0,0,0,0.1),rgba(0,0,0,0.2)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.05),rgba(0,0,0,0.1),rgba(0,0,0,0.2)); /* 标准的语法 */
+}
+@mixin opacityBottomBG {
+  background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0.3)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0.3)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0.3)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,0.3)); /* 标准的语法 */
+}

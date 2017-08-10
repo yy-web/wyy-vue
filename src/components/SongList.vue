@@ -70,7 +70,7 @@
       right: 0;
       color: #fff;
       left: 0;
-      background: rgba(0,0,0,0.1);
+      @include opacityBG;
       .top{
         display: flex;
         align-items: center;
