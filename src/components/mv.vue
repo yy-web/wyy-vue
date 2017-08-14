@@ -5,7 +5,7 @@
                 <div class="mes">
                     <div class="pos">
                         <img class="r_icon" :src="require('../../static/img/cover_video.png')" alt=""/>
-                        <span class="num">{{item.playCount}}</span>
+                        <span class="num">{{count(item.playCount)}}</span>
                     </div>
 
                 </div>
@@ -21,7 +21,7 @@
                 <div class="mes">
                     <div class="pos">
                         <img class="r_icon" :src="require('../../static/img/cover_video.png')" alt=""/>
-                        <span class="num">{{item.playCount}}</span>
+                        <span class="num">{{count(item.playCount)}}</span>
                     </div>
                 </div>
                 <img :src="item.cover" alt=""/>

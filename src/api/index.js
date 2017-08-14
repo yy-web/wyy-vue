@@ -76,7 +76,7 @@ export default{
     },
     //获取主播电台
     getRadioList:(cb,err)=>{
-        const action = '/dj/recommend'
+        const action = '/personalized/djprogram'
         if(cb){
             getHttp(action,cb,err)
         }else{
@@ -111,6 +111,22 @@ export default{
     },
     getMVbillboard:(cb,err)=>{
         const action = 'top/mv?limit=10'
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getCharts:(_num,cb,err,)=>{
+        const action = '/top/list?idx='+_num
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getSonglistDetail:(_id,cb,err,)=>{
+        const action = '/playlist/detail?id='+_id
         if(cb){
             getHttp(action,cb,err)
         }else{

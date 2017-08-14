@@ -4,11 +4,13 @@ import foundMusic from '@/pages/foundMusic'
 import myMusic from '@/pages/myMusic'
 import friend from '@/pages/friend'
 import account from '@/pages/account'
-import Commend from '@/components/foundMusic/Commend'
-import SongListIndex from '@/components/foundMusic/SongList'
-import Charts from '@/components/foundMusic/Charts'
-import MoreMV from '@/components/foundMusic/MoreMV'
-import RadioStation from '@/components/foundMusic/RadioStation'
+import songlistDetail from '@/pages/songlistDetail'
+import Commend from '@/pages/Commend'
+import SongListIndex from '@/pages/SongList'
+import Charts from '@/pages/Charts'
+import MoreMV from '@/pages/MoreMV'
+import RadioStation from '@/pages/RadioStation'
+import hotSonglist from '@/pages/hotSonglist'
 
 Vue.use(Router)
 
@@ -53,6 +55,18 @@ export default new Router({
       path: '/moreMV',
       components: {
         default: MoreMV
+      }
+    }, {
+      path: '/songlistDetail',
+      name: 'songlistDetail',
+      components: {
+        default: songlistDetail
+      }
+    }, {
+      path: '/hotSonglist',
+      name: 'hotSonglist',
+      components: {
+        default: hotSonglist
       }
     }
   ]

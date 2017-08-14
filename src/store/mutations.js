@@ -28,7 +28,16 @@ export default{
     },
     GETBILLBOARD:(state,{billboard})=>{
         state.moreMVPage.billboard = billboard
-    }
+    },
+    GETCHARTS:(state,{chartsList})=>{
+        state.chartsPage.chartsList = chartsList;
+    },
+    GlOBALCHARTS:(state,{globalCharts})=>{
+        state.chartsPage.globalCharts = globalCharts;
+    },
+    GETSONGLISTDETAIL:(state,{songlistDetail})=>{
+        state.songlistDetail = songlistDetail;
+    },
 
 
 }

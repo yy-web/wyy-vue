@@ -5,15 +5,20 @@
               <img :src="item.picUrl" alt=""/>
               <div class="bottomBg">
                   <div class="bottom">
-                      <span class="name ell">{{item.dj.nickname}}</span>
+                      <span class="name ell">{{item.program.radio.name}}</span>
                       <img class="icon" :src="require('../../../static/img/btn_play.png')"/>
                   </div>
               </div>
+              <div class="wrap">
+
+              </div>
           </div>
           <div>
-              <p class="ell2">{{item.copywriter}}</p>
+              <p class="ell2">{{item.name}}</p>
           </div>
+
       </div>
+
   </div>
 </template>
 <script>
@@ -37,6 +42,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 rem(10);
+
   .item{
     font-size: rem(12);
     margin-bottom: rem(10);
@@ -47,6 +53,16 @@
     }
     .img_box{
         position: relative;
+
+        .wrap{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: rem(3);
+            @include opacityBottomBG
+             z-index: 2;
+        }
     }
     .bottomBg{
       position: absolute;
@@ -54,7 +70,7 @@
       right: 0;
       color: #fff;
       left: 0;
-      background: rgba(0,0,0,0.1);
+      z-index: 3;
       .bottom{
         display: flex;
         align-items: center;

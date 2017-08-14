@@ -57,7 +57,7 @@ export default{
 
 </script>
 <style lang="scss" scoped>
-@import "../../style/index.scss";
+@import "../style/index.scss";
 .block{
   position: relative;
 }
@@ -76,7 +76,7 @@ export default{
   justify-content: space-between;
   padding:rem(3) rem(7);
   .c_icon{
-    background: url('../../../static/img/theme.png') no-repeat;
+    background: url('../../static/img/theme.png') no-repeat;
     background-size: cover;
     display: inline-block;
     width: rem(15);
@@ -92,7 +92,7 @@ export default{
   font-size: rem(12);
   color: #999;
   .hot{
-    background: url('../../../static/img/slist_hot.png')no-repeat;
+    background: url('../../static/img/slist_hot.png')no-repeat;
     display: inline-block;
     background-size: cover;
     width: rem(22);
@@ -113,7 +113,7 @@ export default{
 
   }
   .arrow{
-    background: url('../../../static/img/r_arrow.png') no-repeat;
+    background: url('../../static/img/r_arrow.png') no-repeat;
     display: inline-block;
     background-size: 100%;
     width: rem(50);

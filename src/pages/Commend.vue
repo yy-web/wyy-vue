@@ -3,15 +3,15 @@
   <banner></banner>
   <div class="tool">
     <div class="item">
-      <img :src="require('../../../static/img/topbtn_fm.png')" />
+      <img :src="require('../../static/img/topbtn_fm.png')" />
       <span>私人电台</span>
     </div>
     <div class="item">
-      <img :src="require('../../../static/img/topbtn_special.png')" />
+      <img :src="require('../../static/img/topbtn_special.png')" />
       <span>每日歌曲推荐</span>
     </div>
     <div class="item">
-      <img :src="require('../../../static/img/topbtn_rank.png')" />
+      <img :src="require('../../static/img/topbtn_rank.png')" />
       <span>云音乐热歌榜</span>
     </div>
   </div>
@@ -101,7 +101,7 @@ export default {
 
 }
 </script>
-<style lang="scss" scoped>@import '../../style/index.scss';
+<style lang="scss" scoped>@import '../style/index.scss';
 .tool {
     background: #fff;
     height: rem(100);

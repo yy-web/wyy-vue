@@ -13,16 +13,16 @@
     </div>
   </div>
   <div class="content">
-    <div class="block" v-if="!test">
+    <div class="block" v-if="!changeOption">
       <v-title :name="'最新MV'"></v-title>
       <mv-list :type="false" :mvData="moreMVPage.newMV"></mv-list>
     </div>
-    <div class="block" v-if="test">
+    <div class="block" v-if="changeOption">
         <div class="tips">
             <p>最近更新：今天</p>
-            <span class="dis_i"></span>
+            <span class="dis_i" @click="showTips"></span>
         </div>
-        <div class="tipsBox">
+        <div class="tipsBox" :class="tipFlag ? 'tipsBoxActive' : ''">
           <div class="bubble">
             <p>选取云音乐中三个月内发布的热度最高的50支MV， 每天更新。热度由MV播放、收藏、分享数量综合计算</p>
           </div>
@@ -57,8 +57,11 @@ export default {
         if(this.$store.state.moreMVPage.billboard.length === 0){
             this.getMVbillboard();
         }
-        this.test = !this.test
+        this.changeOption = !this.changeOption
         this.selectPos = _index;
+    },
+    showTips(){
+        this.tipFlag = !this.tipFlag
     }
   },
   mounted() {
@@ -66,14 +69,16 @@ export default {
   },
   data() {
     return {
-        test:false,
+        changeOption:false,
         selectPos : 0,
-        topBar:[{name:'最新'},{name:'排行榜'}]
+        topBar:[{name:'最新'},{name:'排行榜'}],
+        tipFlag:false
+
     }
   }
 }
 </script>
-<style lang="scss" scoped>@import "../../style/index.scss";
+<style lang="scss" scoped>@import "../style/index.scss";
 .wrap {
     position: fixed;
     width: 100%;
@@ -95,7 +100,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     .dis_i{
-        background: url('../../../static/img/i.png')no-repeat;
+        background: url('../../static/img/i.png')no-repeat;
         width: rem(20);
         height: rem(20);
         background-size: 100%;
@@ -103,16 +108,20 @@ export default {
     }
 
 }
+
 .tipsBox{
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: rem(40);
+    right: rem(1);
+    z-index: 101;
+    opacity:0;
+    filter: alpha(opacity=0);
   .bubble{
       background: #000;
       border-radius: rem(5);
       width: 99%;
       height: rem(46);
-      position: absolute;
-      top: rem(40);
-      right: rem(1);
-      z-index: 101;
       color:#fff;
       font-size: rem(12);
       p{
@@ -125,7 +134,7 @@ export default {
   }
   #triangleUp {
     position: absolute;
-    top: rem(28);
+    top: rem(-13);
     right: rem(8);
     z-index: 101;
     width: 0;
@@ -133,7 +142,11 @@ export default {
     border-right: rem(13) solid transparent;
     border-bottom: rem(13) solid black;
     border-left: rem(13) solid transparent;
+    }
 }
+.tipsBoxActive{
+    opacity:1;
+    filter: alpha(opacity=1);
 }
 .headBg {
     width: 100%;
@@ -146,7 +159,7 @@ export default {
     box-sizing: border-box;
     color: #fff;
     .back {
-        background: url('../../../static/img/topbar_back.png') no-repeat;
+        background: url('../../static/img/topbar_back.png') no-repeat;
         width: rem(28);
         height: rem(28);
         background-size: 100%;
@@ -182,7 +195,7 @@ export default {
         height: rem(28);
     }
     .topBar_play {
-        background: url('../../../static/img/topbar_playing.png')no-repeat;
+        background: url('../../static/img/topbar_playing.png')no-repeat;
     }
 
 }

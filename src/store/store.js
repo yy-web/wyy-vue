@@ -19,7 +19,12 @@ const initialState = {
     moreMVPage:{
         newMV:[],
         billboard:[]
-    }
+    },
+    chartsPage:{
+        chartsList:[],
+        globalCharts:[]
+    },
+    songlistDetail:{}
 }
 
 Vue.use(Vuex);

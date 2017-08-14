@@ -6,7 +6,7 @@
         <div class="top">
             <div class="pos">
                 <img class="r_icon" :src="require('../../../static/img/cover_video.png')" alt=""/>
-                <span class="num">{{item.playCount}}</span>
+                <span class="num">{{count(item.playCount)}}</span>
             </div>
         </div>
         <div class="bottom">
@@ -24,7 +24,7 @@
 </div>
 </template>
 <script>
-
+import {mapActions} from 'vuex';
 export default {
   name: 'mvBillboard',
   data() {
@@ -34,13 +34,15 @@ export default {
   },
   methods:{
       getRank(_rank){
-          console.log(String(_rank).length);
           if(String(_rank).length === 2 || String(_rank).length > 2){
               return String(_rank)
           }else{
               return '0'+ String(_rank)
           }
-      }
+      },
+  },
+  mounted(){
+      console.log(this.count(12311),123)
   },
   props:{
       billboardData:Array,
@@ -70,12 +72,16 @@ export default {
     .top{
         position: absolute;
         top: 0;
-        right: rem(5);
+        right: 0;
+        left: 70%;
         color: #fff;
         font-size: rem(12);
         .pos{
+            @include opacityBG;
             display: flex;
+            justify-content: flex-end;
             align-items: center;
+            padding-right: rem(5);
             .r_icon{
                 width: rem(12);
                 height: rem(12);
