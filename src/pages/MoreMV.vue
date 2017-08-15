@@ -2,8 +2,7 @@
 <div class="more_mv">
   <div class="wrap">
     <div class="headBg">
-      <router-link class="back" to="/foundMusic">
-      </router-link>
+      <router-link class="back" to="/foundMusic"/>
       <div class="mid">
         <div v-for="(item,index) in topBar"  @click="clickHandle(index)" :class="index == selectPos ? 'select' : 0">
           {{item.name}}

@@ -38,6 +38,9 @@ export default{
     GETSONGLISTDETAIL:(state,{songlistDetail})=>{
         state.songlistDetail = songlistDetail;
     },
+    GETHOTSONGLIST:(state,{hotSonglist})=>{
+        state.hotSonglist = hotSonglist;
+    }
 
 
 }

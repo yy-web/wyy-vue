@@ -1,6 +1,6 @@
 <template>
 <div class="globalCharts">
-    <div class="item" v-for="item in globalCharts">
+    <div class="item" v-for="(item,index) in globalCharts" :key="index">
         <img :src="item.data.result.coverImgUrl" alt=""/>
         <span class="ell2">{{item.data.result.name}}</span>
     </div>

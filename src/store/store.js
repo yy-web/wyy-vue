@@ -24,7 +24,8 @@ const initialState = {
         chartsList:[],
         globalCharts:[]
     },
-    songlistDetail:{}
+    songlistDetail:{},
+    hotSonglist:[]
 }
 
 Vue.use(Vuex);

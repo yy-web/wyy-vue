@@ -1,6 +1,6 @@
 <template>
 <div class="yunMusic">
-  <div class="item" v-for="(item,index) in yunMusic">
+  <div class="item" v-for="(item,index) in yunMusic" :key="index">
       <div class="left">
           <img :src="item.data.result.coverImgUrl" alt="">
       </div>

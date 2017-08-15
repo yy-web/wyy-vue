@@ -125,7 +125,7 @@ export default{
             return http.get(action)
         }
     },
-    getSonglistDetail:(_id,cb,err,)=>{
+    getSonglistDetail:(_id,cb,err)=>{
         const action = '/playlist/detail?id='+_id
         if(cb){
             getHttp(action,cb,err)
@@ -133,5 +133,13 @@ export default{
             return http.get(action)
         }
     },
+    getHotSonglist:(_cat,cb,err)=>{
+        const action = '/top/playlist/highquality?limit=30&cat='+_cat
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    }
 
 }

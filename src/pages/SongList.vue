@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <div class="block hot_box">
+    <div class="block hot_box" @click="goHotSonglist">
       <div class="left">
         <img :src="songListPage.playList.coverImgUrl" alt="">
       </div>
@@ -42,7 +42,10 @@ export default{
       ...mapState(['songListPage']),
     },
     methods: {
-      ...mapActions(['fetchSongList'])
+      ...mapActions(['fetchSongList']),
+      goHotSonglist(){
+          this.$router.push('/hotSonglist');
+      }
     },
     mounted() {
         this.fetchSongList();

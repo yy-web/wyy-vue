@@ -54,6 +54,11 @@ export default{
         api.getSonglistDetail(id,res=>{
             commit('GETSONGLISTDETAIL',{songlistDetail:res.playlist})
         })
+    },
+    getHotSonglist({ commit },cat){
+        api.getHotSonglist(cat,res=>{
+            commit('GETHOTSONGLIST',{hotSonglist:res.playlists})
+        })
     }
 
 

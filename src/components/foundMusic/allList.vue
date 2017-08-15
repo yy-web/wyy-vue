@@ -1,6 +1,6 @@
 <template>
     <div class="allList">
-        <div class="item big"   v-for="(item,index) in allList" :key="index">
+        <router-link :to="{ name: 'songlistDetail', query: { id: item.id }}" class="item big"  v-for="(item,index) in allList" :key="index">
             <img :src="item.coverImgUrl" alt=""/>
             <div class="topBg">
                 <div class="top">
@@ -17,7 +17,7 @@
             <div>
                 <p class="ell2">{{item.name}}</p>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 <script>
@@ -41,6 +41,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 rem(10);
+
   .big{
     width: 49%;
     img{
@@ -96,6 +97,8 @@
     p{
         line-height: 1.5;
         height: rem(36);
+        color: #666;
+        
     }
   }
 }
