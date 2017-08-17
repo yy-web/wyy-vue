@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <router-view></router-view>
-  <foot-nav></foot-nav>
+  <foot-nav v-if="this.$route.path == 'play'"></foot-nav>
 </div>
 </template>
 

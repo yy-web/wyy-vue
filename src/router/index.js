@@ -5,12 +5,14 @@ import myMusic from '@/pages/myMusic'
 import friend from '@/pages/friend'
 import account from '@/pages/account'
 import songlistDetail from '@/pages/songlistDetail'
+import albumDetail from '@/pages/albumDetail'
 import Commend from '@/pages/Commend'
 import SongListIndex from '@/pages/SongList'
 import Charts from '@/pages/Charts'
 import MoreMV from '@/pages/MoreMV'
 import RadioStation from '@/pages/RadioStation'
 import hotSonglist from '@/pages/hotSonglist'
+import play from '@/pages/play'
 
 Vue.use(Router)
 
@@ -67,6 +69,18 @@ export default new Router({
       name: 'hotSonglist',
       components: {
         default: hotSonglist
+      }
+    }, {
+      path: '/albumDetail',
+      name: 'albumDetail',
+      components: {
+        default: albumDetail
+      }
+    }, {
+      path: '/play',
+      name: 'play',
+      components: {
+        default: play
       }
     }
   ]

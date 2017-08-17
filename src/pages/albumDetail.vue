@@ -1,13 +1,13 @@
 <template>
-    <div class="songlistDetail">
-        <div class="cover blur" :style="{'background-image':'url('+songlistDetail.coverImgUrl+')','background-size':'cover'}">
+    <div class="albumDetail">
+        <div class="cover blur" :style="{'background-image':'url('+albumDetail.album.picUrl+')','background-size':'cover'}">
             <div class="coverBg"></div>
         </div>
         <div class="wrap">
           <div class="headBg">
             <div class="back" @click="routerBack"></div>
             <div class="mid">
-              歌单
+              专辑
             </div>
             <span class="icon topBar_play"></span>
           </div>
@@ -15,38 +15,30 @@
         <div class="block user_mes_pos">
             <div class="user_mes">
                 <div class="left">
-                    <img class="songlistBg" :src="songlistDetail.coverImgUrl" alt=""/>
-                    <div class="topBg">
-                        <div class="hot_logo" v-if="songlistDetail.highQuality">
-                        </div>
-                        <div class="top">
-                          <img class="icon" :src="require('../../static/img/cover_music.png')"/>
-                          <span class="num">{{count(songlistDetail.playCount)}}</span>
-                        </div>
-                    </div>
+                    <img class="songlistBg" :src="albumDetail.album.picUrl" alt=""/>
                 </div>
                 <div class="right">
                     <div class="title">
-                        {{songlistDetail.name}}
+                        {{albumDetail.album.name}}
                     </div>
                     <div class="user">
-                        <img :src="songlistDetail.creator.avatarUrl" alt=""/>
-                        <span class="userName">{{songlistDetail.creator.nickname}}</span>
+                        <span class="userName">歌手：{{albumDetail.album.artists[0].name}}</span>
+                        <p>发行时间：{{getDate(albumDetail.album.publishTime)}}</p>
                     </div>
                 </div>
             </div>
             <div class="bar">
                 <div class="barItem">
                     <span class="new barIcon"></span>
-                    <span class="bar_text">{{songlistDetail.subscribedCount}}</span>
+                    <span class="bar_text">收藏</span>
                 </div>
                 <div class="barItem">
                     <span class="cmt barIcon"></span>
-                    <span class="bar_text">{{songlistDetail.commentCount}}</span>
+                    <span class="bar_text">{{albumDetail.album.info.commentCount}}</span>
                 </div>
                 <div class="barItem">
                     <span class="share barIcon"></span>
-                    <span class="bar_text">{{songlistDetail.shareCount}}</span>
+                    <span class="bar_text">{{albumDetail.album.info.shareCount}}</span>
                 </div>
                 <div class="barItem">
                     <span class="dld barIcon"></span>
@@ -55,7 +47,7 @@
             </div>
         </div>
         <div class="block">
-            <song-item :songData="songlistDetail.tracks"/>
+            <song-item :songData="albumDetail.songs" :type="'blbum'"/>
         </div>
     </div>
 </template>
@@ -66,7 +58,7 @@ import {
   mapActions
 } from 'vuex';
 export default{
-    name:'songlistDetail',
+    name:'albumDetail',
     components:{
         songItem
     },
@@ -76,17 +68,17 @@ export default{
         }
     },
     computed: {
-      ...mapState(['songlistDetail']),
+      ...mapState(['albumDetail']),
     },
     methods: {
-      ...mapActions(['getSonglistDetail']),
+      ...mapActions(['getalbumDetail']),
       routerBack(){
-        this.$store.state.songlistDetail = {};
+        this.$store.state.albumDetail = {};
         this.$router.go(-1);
       }
     },
     mounted() {
-        this.getSonglistDetail(this.$route.query.id)
+        this.getalbumDetail(this.$route.query.id)
     },
 }
 
@@ -150,6 +142,8 @@ export default{
     position: absolute;
     top: rem(64);
     margin: 0 rem(20);
+    left: 0;
+    right: 0;
 }
 .user_mes{
     display: flex;
@@ -159,27 +153,6 @@ export default{
         .songlistBg{
             width:rem(130);
             height:rem(130);
-        }
-        .topBg{
-          position: absolute;
-          top: 0;
-          right: 0;
-          color: #fff;
-          left: 0;
-          @include opacityBG;
-          .hot_logo{
-              background-size: 100%;
-              background-image: url('../../static/img/sup_hot.png');
-              width: rem(20);
-              height:rem(20);
-              position: absolute;
-          }
-          .top{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: rem(5);
-          }
         }
     }
     .right{
@@ -193,12 +166,14 @@ export default{
         .user{
             margin-top: rem(20);
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: rem(12);
         }
         .userName{
             color: #eee;
+            margin-bottom: rem(3);
             font-size: rem(12);
-            margin-left: rem(10);
         }
     }
 }

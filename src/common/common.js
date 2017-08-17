@@ -8,4 +8,11 @@ exports.install = function (Vue, options) {
             return num
         }
     }
+    Vue.prototype.getDate = (_timeStamp)=>{
+        let date = new Date(_timeStamp);
+        const Y = date.getFullYear() + '-';
+        const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        const D = date.getDate() + ' ';
+        return (Y+M+D);
+    }
 };

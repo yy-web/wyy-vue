@@ -1,18 +1,21 @@
 <template>
     <div class="songItem" >
-        <div class="item" v-for="(item,index) in songData">
+        <router-link :to="{ name: 'play', query: { id: item.id }}" class="item" v-for="(item,index) in songData">
             <div class="left">
                 <span class="rank">{{index+1}}</span>
             </div>
             <div class="right">
                 <span class="songName">{{item.name}}</span>
-                <p class="ell">
+                <p class="ell" v-if="!type">
                     <span class="art" v-for="(art,artsIndex) in item.ar">{{art.name}}<span v-if="artsIndex == 0 && item.ar.length > 1">/</span></span>
                     -
                     <span class="album">{{item.al.name}}</span>
                 </p>
+                <p class="ell" v-else>
+                    <span class="art" v-for="(art,artsIndex) in item.ar">{{art.name}}<span v-if="artsIndex == 0 && item.ar.length > 1">/</span></span>
+                </p>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 <script>
@@ -24,7 +27,8 @@
             }
         },
         props:{
-            songData:Array
+            songData:Array,
+            type:String
         }
     }
 
@@ -37,6 +41,7 @@
             align-items: center;
             justify-content: space-between;
             padding:rem(8) 0 rem(3) 0;
+            color: #666;
 
         }
         .left{

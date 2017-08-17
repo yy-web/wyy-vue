@@ -25,7 +25,13 @@ const initialState = {
         globalCharts:[]
     },
     songlistDetail:{},
-    hotSonglist:[]
+    albumDetail:{},
+    hotSonglist:[],
+    playPage:{
+        songDetail:[],
+        lyric:{},
+        songUrl:''
+    }
 }
 
 Vue.use(Vuex);

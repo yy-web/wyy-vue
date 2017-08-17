@@ -55,11 +55,26 @@ export default{
             commit('GETSONGLISTDETAIL',{songlistDetail:res.playlist})
         })
     },
+    getalbumDetail({ commit },id){
+        api.getalbumDetail(id,res=>{
+            commit('GETALBUMDETAIL',{albumDetail:res})
+        })
+    },
     getHotSonglist({ commit },cat){
         api.getHotSonglist(cat,res=>{
             commit('GETHOTSONGLIST',{hotSonglist:res.playlists})
         })
-    }
-
+    },
+    fetchSong({ commit },_id){
+        console.log(_id,'2222');
+        const arr = [api.getSongDetail(_id),api.getLyric(_id),api.getSongUrl(_id)]
+        const cb = (res)=>{
+            console.log(res[0].data.songs);
+            commit('GETSONGDETAIL',{songDetail:res[0].data.songs[0]})
+            commit('GETLYRIC',{lyric:res[1].data.lrc})
+            commit('GETSONGURL',{songUrl:res[2].data.data.url})
+        }
+        api.fetchAlls(arr,cb)
+    },
 
 }

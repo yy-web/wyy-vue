@@ -40,7 +40,17 @@ export default{
     },
     GETHOTSONGLIST:(state,{hotSonglist})=>{
         state.hotSonglist = hotSonglist;
+    },
+    GETALBUMDETAIL:(state,{albumDetail})=>{
+        state.albumDetail = albumDetail;
+    },
+    GETSONGDETAIL:(state,{songDetail})=>{
+        state.playPage.songDetail = songDetail;
+    },
+    GETLYRIC:(state,{lyric})=>{
+        state.playPage.lyric = lyric;
+    },
+    GETSONGURL:(state,{songUrl})=>{
+        state.playPage.songUrl = songUrl;
     }
-
-
 }

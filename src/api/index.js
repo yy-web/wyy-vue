@@ -133,6 +133,14 @@ export default{
             return http.get(action)
         }
     },
+    getalbumDetail:(_id,cb,err)=>{
+        const action = '/album?id='+_id
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
     getHotSonglist:(_cat,cb,err)=>{
         const action = '/top/playlist/highquality?limit=30&cat='+_cat
         if(cb){
@@ -140,6 +148,32 @@ export default{
         }else{
             return http.get(action)
         }
+    },
+    getSongDetail:(_id,cb,err)=>{
+        console.log(_id,'id');
+        const action = '/song/detail?ids='+_id
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getLyric:(_id,cb,err)=>{
+        const action = '/lyric?id='+_id
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
+    },
+    getSongUrl:(_id,cb,err)=>{
+        const action = '/music/url?id='+_id
+        if(cb){
+            getHttp(action,cb,err)
+        }else{
+            return http.get(action)
+        }
     }
+
 
 }
