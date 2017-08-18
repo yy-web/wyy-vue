@@ -1,92 +1,96 @@
 <template>
-    <div class="play">
-        <div class="cover blur" :style="{'background-image':'url('+playPage.songDetail.al.picUrl+')','background-size':'cover'}">
-            <div class="coverBg"></div>
-        </div>
-        <div class="wrap">
-          <div class="headBg">
-            <div class="back" @click="routerBack"></div>
-            <div class="mid">
-                <p>{{playPage.songDetail.name}}</p>
-                <span v-for="(item,index) in playPage.songDetail.ar">{{item.name}}<span v-if="index == 0 && playPage.songDetail.ar.length > 1">/</span></span>
-            </div>
-            <span class="icon topBar_play"></span>
-          </div>
-        </div>
-        <div class="content">
-            <div class="lyric">
-                <p v-for="item in playPage.lyric.lyric.split('\n')">{{item.replace(/\[\d*:\d*((\.|\:)\d*)*\]/g, '')}}</p>
-            </div>
+<div class="play">
+  <div class="cover blur" :style="{'background-image':'url('+playPage.songDetail.al.picUrl+')','background-size':'cover'}">
+    <div class="coverBg"></div>
+  </div>
+  <div class="wrap">
+    <div class="headBg">
+      <div class="back" @click="routerBack"></div>
+      <div class="mid">
+        <p>{{playPage.songDetail.name}}</p>
+        <span v-for="(item,index) in playPage.songDetail.ar">{{item.name}}<span v-if="index == 0 && playPage.songDetail.ar.length > 1">/</span></span>
+      </div>
+      <span class="icon topBar_play"></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="lyric">
+      <p v-for="item in playPage.lyric.lyric.split('\n')">{{item.replace(/\[\d*:\d*((\.|\:)\d*)*\]/g, '')}}</p>
+    </div>
 
 
-        </div>
-        <div class="bottom">
-            <video src="videofile.ogg" autoplay >
+  </div>
+  <div class="bottom">
+    <video id="video" :src="playPage.songUrl" autoplay>
 
             </video>
-            <div class="line_bar">
-                <span class="startTime">00:00</span>
-                <div class="line">
-                    <div class="red"></div>
-                    <div class="dotBox">
-                        <div class="dot">
-                            <div class="docsm"></div>
-                        </div>
-                    </div>
-                </div>
-                <span class="total">03:41</span>
-            </div>
-            <div class="bottom_bar">
-                <span class="loop"></span>
-                <span class="prev"></span>
-                <span class="play_btn"></span>
-                <span class="next"></span>
-                <span class="multi"></span>
-            </div>
+    <div class="line_bar">
+      <span class="startTime">00:00</span>
+      <div class="line">
+        <div class="red"></div>
+        <div class="dotBox">
+          <div class="dot">
+            <div class="docsm"></div>
+          </div>
         </div>
+      </div>
+      <span class="total">03:41</span>
     </div>
+    <div class="bottom_bar">
+      <span class="loop"></span>
+      <span class="prev"></span>
+      <span class="play_btn" @click="play()"></span>
+      <span class="next"></span>
+      <span class="multi"></span>
+    </div>
+  </div>
+</div>
 </template>
 <script>
 import {
   mapState,
   mapActions
 } from 'vuex';
-export default{
-    name:'playPage',
-    components:{
-    },
-    data(){
-        return{
+export default {
+  name: 'playPage',
+  components: {},
+  data() {
+    return {
 
-        }
+    }
+  },
+  computed: {
+    ...mapState(['playPage']),
+  },
+  methods: {
+    ...mapActions(['fetchSong']),
+    routerBack() {
+      this.$store.state.playPage = {};
+      this.$router.go(-1);
     },
-    computed: {
-      ...mapState(['playPage']),
-    },
-    methods: {
-      ...mapActions(['fetchSong']),
-      routerBack(){
-        this.$store.state.albumDetail = {};
-        this.$router.go(-1);
+      play(){
+          const video = document.getElementById('video');
+          console.log(video, 'play');
       }
-    },
-    mounted() {
-        this.fetchSong(this.$route.query.ids)
-    },
+  },
+  mounted() {
+    this.fetchSong(this.$route.query.ids);
+    const video = document.getElementById('video');
+    console.log(this.playPage, 'mounted');
+    console.log(video, 'mounted');
+  },
 }
-
 </script>
-<style scoped lang="scss">
-@import "../style/index.scss";
+<style scoped lang="scss">@import "../style/index.scss";
 ::-webkit-scrollbar {
     display: none;
 }
-.content{
+.content {
     margin-top: rem(64);
     position: relative;
     z-index: 100;
 }
-.cover{
+.cover {
     opacity: 0.8;
     overflow: hidden;
     background-position: 50%;
@@ -97,7 +101,7 @@ export default{
     left: 0;
     right: 0;
 }
-.coverBg{
+.coverBg {
     background: rgba(0,0,0,0.15);
     height: 100%;
     position: absolute;
@@ -110,51 +114,53 @@ export default{
 }
 .blur {
     //filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
-    -webkit-filter: blur(21px); /* Chrome, Opera */
+    -webkit-filter: blur(21px);
+    /* Chrome, Opera */
     -moz-filter: blur(21px);
     -ms-filter: blur(21px);
     filter: blur(21px);
-    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=21, MakeShadow=false); /* IE6~IE9 */
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=21, MakeShadow=false);
+    /* IE6~IE9 */
 }
-.lyric{
+.lyric {
     text-align: center;
     height: rem(350);
     overflow-y: scroll;
     margin-top: rem(150);
     line-height: 1.5;
-    color:rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.6);
 }
-.bottom{
+.bottom {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
 }
-.line_bar{
-    margin:0 rem(10);
+.line_bar {
+    margin: 0 rem(10);
     font-size: rem(12);
     color: #fff;
     display: flex;
     align-items: center;
-    .line{
+    .line {
         position: relative;
-        flex:2;
+        flex: 2;
         margin: 0 rem(15);
         height: rem(2);
         background: rgba(255,255,255,0.5);
-        .red{
+        .red {
             position: absolute;
             height: rem(2);
             background: $baseColor;
             width: rem(100);
         }
     }
-    .dotBox{
+    .dotBox {
         position: absolute;
         left: rem(100);
         transform: translateY(-50%);
     }
-    .dot{
+    .dot {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -163,7 +169,7 @@ export default{
         border-radius: 50%;
         text-align: center;
         background: #fff;
-        .docsm{
+        .docsm {
             width: rem(3);
             height: rem(3);
             border-radius: 50%;
@@ -171,35 +177,35 @@ export default{
         }
     }
 }
-.bottom_bar{
+.bottom_bar {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    span{
+    span {
         display: inline-block;
-        background-size: cover;;
+        background-size: cover;
     }
-    .loop{
+    .loop {
         background-image: url('../../static/img/loop.png');
         width: rem(44);
         height: rem(44);
     }
-    .prev{
+    .prev {
         background-image: url('../../static/img/btn_prev.png');
         width: rem(49);
         height: rem(49);
     }
-    .play_btn{
+    .play_btn {
         background-image: url('../../static/img/play.png');
         width: rem(83);
         height: rem(83);
     }
-    .next{
+    .next {
         background-image: url('../../static/img/btn_next.png');
         width: rem(49);
         height: rem(49);
     }
-    .multi{
+    .multi {
         background-image: url('../../static/img/multi.png');
         width: rem(36);
         height: rem(36);
@@ -225,7 +231,7 @@ export default{
         width: rem(260);
         display: inline-block;
         text-align: center;
-        span{
+        span {
             font-size: rem(12);
         }
     }
@@ -238,5 +244,4 @@ export default{
         background: url('../../static/img/topbar_playing.png')no-repeat;
     }
 }
-
 </style>

@@ -66,13 +66,11 @@ export default{
         })
     },
     fetchSong({ commit },_id){
-        console.log(_id,'2222');
         const arr = [api.getSongDetail(_id),api.getLyric(_id),api.getSongUrl(_id)]
         const cb = (res)=>{
-            console.log(res[0].data.songs);
             commit('GETSONGDETAIL',{songDetail:res[0].data.songs[0]})
             commit('GETLYRIC',{lyric:res[1].data.lrc})
-            commit('GETSONGURL',{songUrl:res[2].data.data.url})
+            commit('GETSONGURL',{songUrl:res[2].data.data[0].url})
         }
         api.fetchAlls(arr,cb)
     },
